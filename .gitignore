@@ -1,2 +1,4 @@
-*/__pycache__
-
+Live/
+templates/
+Utils/__pycache__/
+current.tar.gz

@@ -9,7 +9,8 @@ def initialize_log_dict(Formatted_User_Supplied_File, log_format, save_to_json=T
 
     first_line_is_date = False
     first_line = lines[0].strip() if lines else ""
-    if re.match(r"\d{1,2}\/\d{1,2}", first_line) or re.match(r"\/\d{1,2}\/\d{1,2}", first_line):
+    if re.match(r"\d{1,2}\/\d{1,2}", first_line) or re.match(
+            r"\/\d{1,2}\/\d{1,2}", first_line):
         first_line_is_date = True
 
     day_count = 0 if first_line_is_date else 1
@@ -23,13 +24,15 @@ def initialize_log_dict(Formatted_User_Supplied_File, log_format, save_to_json=T
     for line in lines:
         line = line.strip()
 
-        if line == '/' or re.match(r"\d{1,2}\/\d{1,2}", line) or re.match(r"\/\d{1,2}\/\d{1,2}", line):
+        if line == '/' or re.match(r"\d{1,2}\/\d{1,2}", line) or re.match(
+                r"\/\d{1,2}\/\d{1,2}", line):
             day_count += 1
             tree_count = 1
             day_dict[day_count] = {"date": "",
                                    "total_day_footage": None, "trees": {}}
 
-            if re.match(r"\d{1,2}\/\d{1,2}", line) or re.match(r"\/\d{1,2}\/\d{1,2}", line):
+            if re.match(r"\d{1,2}\/\d{1,2}", line) or re.match(
+                    r"\/\d{1,2}\/\d{1,2}", line):
                 day_dict[day_count]['date'] = line
         else:
             logs_temp = line.split()

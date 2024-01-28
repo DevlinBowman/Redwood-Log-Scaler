@@ -2,7 +2,7 @@ import re
 
 
 def input_file_formatter(infile, outfile):
-    # Step 1: Read the file content
+
     with open(infile, 'r') as file:
         raw_data = file.read()
 
