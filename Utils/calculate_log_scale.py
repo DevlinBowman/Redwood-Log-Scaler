@@ -9,23 +9,28 @@ def calculate_board_footage(log_info, scale_table):
     log_identifier = None
 
     try:
+        # Try to use the scale table first
         footage = scale_table[length][diameter][taper]
     except KeyError:
-        exceeds_len = int(length) > 40
-        exceeds_diam = int(diameter) > 50
+        # Custom calculation for logs outside the scale table parameters
+        custom_footage = int(diameter) ** 2 * int(length) * 0.05
+        footage = math.floor(custom_footage / 10) * \
+            10  # Round down to nearest 10
 
-        if exceeds_len:
+        # Append relevant notes if dimensions exceed certain thresholds
+        if int(length) > 40:
             log_info['notes'].append('exceeds_max_len')
-        if exceeds_diam:
+        if int(diameter) > 50:
             log_info['notes'].append('exceeds_max_diam')
 
-        custom_footage = int(diameter) ** 2 * int(length) * 0.05
-        footage = math.floor(custom_footage / 10) * 10
+        # Use the custom footage directly
+        # Safely get log_key to avoid KeyError
+        log_identifier = log_info.get('log_key')
 
-        log_identifier = f"{log_info['log_key']}"
-
+    # Handle cases where footage is calculated as 0
     if footage == 0:
-        log_identifier = f"{log_info['log_key']}"
+        # Safely get log_key to avoid KeyError
+        log_identifier = log_info.get('log_key')
 
     return footage, log_identifier
 
@@ -39,7 +44,8 @@ def update_day_dict_with_footage(day_dict, scale_table, overwrite_json=True):
         for tree_key, tree_info in day_info['trees'].items():
             total_tree_footage = 0
             for log_key, log_info in tree_info['logs_info'].items():
-                footage, log_identifier = calculate_board_footage(log_info, scale_table)
+                footage, log_identifier = calculate_board_footage(
+                    log_info, scale_table)
 
                 if footage == 0:
                     problematic_log_identifier = f"Day {day_key}, Tree {tree_key}, Log {log_key}"

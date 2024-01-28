@@ -45,3 +45,5 @@ def input_file_formatter(infile, outfile):
     with open(outfile, 'w') as file:
         for line in output_lines:
             file.write(f"{line}\n")
+
+    print(f"1- Formatted input file written to:\n {outfile}\n")

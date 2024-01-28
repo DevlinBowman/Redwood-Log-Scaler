@@ -79,6 +79,9 @@ def initialize_log_dict(Formatted_User_Supplied_File, log_format, save_to_json=T
                 if diameter is None or length is None:
                     log_entry['notes'].append('null_log')
 
+                if log_entry['length'] is not None and log_entry['length'] % 2 != 0:
+                    log_entry['notes'].append('odd_length')
+
                 log_entries.append(log_entry)
 
             # Sort by diameter in descending order
@@ -121,5 +124,7 @@ def initialize_log_dict(Formatted_User_Supplied_File, log_format, save_to_json=T
     if save_to_json:
         with open('Live/parsed_data.json', 'w') as f:
             json.dump(day_dict, f, indent=4)
+
+    print(f"3- Initialized dictionary written to:\n Live/parsed_data.json\n")
 
     return day_dict
