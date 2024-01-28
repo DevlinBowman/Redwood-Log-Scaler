@@ -18,8 +18,6 @@ user_supplied_input = "Live/user_supplied_input.txt"
 formatted_user_supplied_input = "Live/formatted_user_supplied_input.txt"
 storage_dict = "Live/parsed_data.json"
 scale_table = "Utils/Scale_table_data.json"
-print(
-    f"0- Files loaded: \n\tuser_supplied_input: {user_supplied_input}\n\tformatted_user_supplied_input: {formatted_user_supplied_input}\n\tstorage_dict: {storage_dict}\n\tscale_table: {scale_table}\n")
 
 # STEP 1:  Format the user supplied input to a standard formattes file
 format_input(user_supplied_input, formatted_user_supplied_input)
@@ -30,7 +28,7 @@ format_input(user_supplied_input, formatted_user_supplied_input)
 # log_format = get_log_format(formatted_user_supplied_input,print_result=True)
 # log_format = 'diameter_by_length'
 log_format = 'length_by_diameter'
-print(f"2- Log format determined to be:{log_format}\n")
+print(f"Log format: {log_format}")
 # ---------------------------------
 
 # STEP 3: Initialize the primary dictionary which will be used to store all the data
@@ -52,8 +50,6 @@ brett_taper_options = create_taper_options(preset='brett_method')
 # **************************
 options = true_taper_options
 # **************************
-print(f"4- Taper options determined to be:{options}\n")
-
 
 # STEP 5: Calculate the board footage using the initialized dictionary and taper options
 updated_day_dict = apply_taper_options(day_dict, options)

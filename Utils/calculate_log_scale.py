@@ -3,34 +3,41 @@ import math
 
 
 def calculate_board_footage(log_info, scale_table):
-    length = str(log_info['length'])
-    diameter = str(log_info['diameter'])
-    taper = log_info['taper']
-    log_identifier = None
+    length = log_info.get('length')
+    diameter = log_info.get('diameter')
+    taper = log_info.get('taper', '0-0')  # Default taper value if not provided
+    log_identifier = log_info.get('log_key', None)
 
-    try:
-        # Try to use the scale table first
-        footage = scale_table[length][diameter][taper]
-    except KeyError:
-        # Custom calculation for logs outside the scale table parameters
-        custom_footage = int(diameter) ** 2 * int(length) * 0.05
-        footage = math.floor(custom_footage / 10) * \
-            10  # Round down to nearest 10
+    # Check for None values in length and diameter
+    if length is None or diameter is None:
+        footage = 0  # Default to 0 footage for invalid logs
+        note = 'invalid_dimensions'
+        if length is None:
+            note += '_missing_length'
+        if diameter is None:
+            note += '_missing_diameter'
+        log_info['notes'].append(note)
+    else:
+        try:
+            # Convert length and diameter to strings as scale_table keys are strings
+            length_str, diameter_str = str(length), str(diameter)
+            # Try to use the scale table
+            footage = scale_table[length_str][diameter_str][taper]
+        except KeyError:
+            # Custom calculation for logs outside the scale table parameters
+            custom_footage = diameter ** 2 * length * 0.05
+            footage = math.floor(custom_footage / 10) * \
+                10  # Round down to nearest 10
 
-        # Append relevant notes if dimensions exceed certain thresholds
-        if int(length) > 40:
-            log_info['notes'].append('exceeds_max_len')
-        if int(diameter) > 50:
-            log_info['notes'].append('exceeds_max_diam')
-
-        # Use the custom footage directly
-        # Safely get log_key to avoid KeyError
-        log_identifier = log_info.get('log_key')
+            # Append relevant notes if dimensions exceed certain thresholds
+            if length > 40:
+                log_info['notes'].append('exceeds_max_len')
+            if diameter > 50:
+                log_info['notes'].append('exceeds_max_diam')
 
     # Handle cases where footage is calculated as 0
-    if footage == 0:
-        # Safely get log_key to avoid KeyError
-        log_identifier = log_info.get('log_key')
+    if footage == 0 and 'invalid_dimensions' not in log_info['notes']:
+        log_info['notes'].append('zero_footage_calculated')
 
     return footage, log_identifier
 

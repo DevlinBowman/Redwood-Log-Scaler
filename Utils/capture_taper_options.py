@@ -83,8 +83,6 @@ def apply_taper_options(day_dict, options, overwrite_json=True):
                     elif 'is_top' in log_info['notes']:
                         log_info['taper'] = options.get('top_taper', '0-0')
     if overwrite_json:
-        print(
-            f'5- Overwriting parsed_data.json with updated taper options:\n {options}\n')
         with open('Live/parsed_data.json', 'w') as f:
             json.dump(day_dict, f, indent=4)
     return day_dict

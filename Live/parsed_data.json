@@ -8637,7 +8637,7 @@
     },
     "12": {
         "date": "10/31",
-        "total_day_footage": 19690,
+        "total_day_footage": 19760,
         "trees": {
             "tree_1": {
                 "original_logs": [
@@ -8801,20 +8801,31 @@
             },
             "tree_5": {
                 "original_logs": [
-                    "1314",
+                    "1214",
                     "3810",
                     "208"
                 ],
-                "total_footage": 210,
+                "total_footage": 280,
                 "logs_info": {
+                    "log_1": {
+                        "diameter": 14,
+                        "length": 12,
+                        "delta": null,
+                        "taper": "0-0",
+                        "footage": 90,
+                        "notes": [
+                            "is_butt",
+                            "is_short"
+                        ]
+                    },
                     "log_2": {
                         "diameter": 10,
                         "length": 38,
-                        "delta": null,
-                        "taper": "5-6",
-                        "footage": 180,
+                        "delta": 4,
+                        "taper": "3-4",
+                        "footage": 160,
                         "notes": [
-                            "is_butt",
+                            "is_middle",
                             "is_long"
                         ]
                     },
@@ -11608,7 +11619,7 @@
     },
     "15": {
         "date": "11/3",
-        "total_day_footage": 23070,
+        "total_day_footage": 23830,
         "trees": {
             "tree_1": {
                 "original_logs": [
@@ -12045,11 +12056,11 @@
             "tree_13": {
                 "original_logs": [
                     "1624",
-                    "3522",
+                    "3622",
                     "3216",
                     "2811"
                 ],
-                "total_footage": 990,
+                "total_footage": 1750,
                 "logs_info": {
                     "log_1": {
                         "diameter": 24,
@@ -12062,12 +12073,23 @@
                             "is_short"
                         ]
                     },
+                    "log_2": {
+                        "diameter": 22,
+                        "length": 36,
+                        "delta": 2,
+                        "taper": "1-2",
+                        "footage": 800,
+                        "notes": [
+                            "is_middle",
+                            "is_long"
+                        ]
+                    },
                     "log_3": {
                         "diameter": 16,
                         "length": 32,
-                        "delta": 8,
-                        "taper": "7-8",
-                        "footage": 440,
+                        "delta": 6,
+                        "taper": "5-6",
+                        "footage": 400,
                         "notes": [
                             "is_middle",
                             "is_long"
@@ -17815,7 +17837,7 @@
     },
     "21": {
         "date": "11/13",
-        "total_day_footage": 23540,
+        "total_day_footage": 23890,
         "trees": {
             "tree_1": {
                 "original_logs": [
@@ -18667,9 +18689,9 @@
             "tree_26": {
                 "original_logs": [
                     "3618",
-                    "4313"
+                    "4213"
                 ],
-                "total_footage": 590,
+                "total_footage": 940,
                 "logs_info": {
                     "log_1": {
                         "diameter": 18,
@@ -18680,6 +18702,18 @@
                         "notes": [
                             "is_butt",
                             "is_long"
+                        ]
+                    },
+                    "log_2": {
+                        "diameter": 13,
+                        "length": 42,
+                        "delta": 5,
+                        "taper": "5-6",
+                        "footage": 350,
+                        "notes": [
+                            "is_top",
+                            "is_long",
+                            "exceeds_max_len"
                         ]
                     }
                 }
@@ -19364,7 +19398,7 @@
     },
     "23": {
         "date": "11/15",
-        "total_day_footage": 31180,
+        "total_day_footage": 32210,
         "trees": {
             "tree_1": {
                 "original_logs": [
@@ -19424,11 +19458,11 @@
             "tree_2": {
                 "original_logs": [
                     "1631",
-                    "3524",
+                    "3624",
                     "3618",
                     "1812"
                 ],
-                "total_footage": 1460,
+                "total_footage": 2490,
                 "logs_info": {
                     "log_1": {
                         "diameter": 31,
@@ -19441,16 +19475,26 @@
                             "is_short"
                         ]
                     },
+                    "log_2": {
+                        "diameter": 24,
+                        "length": 36,
+                        "delta": 7,
+                        "taper": "7-8",
+                        "footage": 1100,
+                        "notes": [
+                            "is_middle",
+                            "is_long"
+                        ]
+                    },
                     "log_3": {
                         "diameter": 18,
                         "length": 36,
-                        "delta": 13,
-                        "taper": "9-10",
-                        "footage": 660,
+                        "delta": 6,
+                        "taper": "5-6",
+                        "footage": 590,
                         "notes": [
                             "is_middle",
-                            "is_long",
-                            "exceeds_max_delta"
+                            "is_long"
                         ]
                     },
                     "log_4": {
@@ -28728,7 +28772,7 @@
     },
     "33": {
         "date": "12/4",
-        "total_day_footage": 19180,
+        "total_day_footage": 19500,
         "trees": {
             "tree_1": {
                 "original_logs": [
@@ -29055,20 +29099,31 @@
             },
             "tree_11": {
                 "original_logs": [
-                    "3514",
+                    "3614",
                     "3611",
                     "1610"
                 ],
-                "total_footage": 270,
+                "total_footage": 590,
                 "logs_info": {
-                    "log_2": {
-                        "diameter": 11,
+                    "log_1": {
+                        "diameter": 14,
                         "length": 36,
                         "delta": null,
                         "taper": "5-6",
-                        "footage": 210,
+                        "footage": 340,
                         "notes": [
                             "is_butt",
+                            "is_long"
+                        ]
+                    },
+                    "log_2": {
+                        "diameter": 11,
+                        "length": 36,
+                        "delta": 3,
+                        "taper": "3-4",
+                        "footage": 190,
+                        "notes": [
+                            "is_middle",
                             "is_long"
                         ]
                     },
@@ -30797,16 +30852,16 @@
     },
     "35": {
         "date": "12/6",
-        "total_day_footage": 16220,
+        "total_day_footage": 16250,
         "trees": {
             "tree_1": {
                 "original_logs": [
                     "3624",
                     "4021",
                     "2615",
-                    "238"
+                    "208"
                 ],
-                "total_footage": 2220,
+                "total_footage": 2250,
                 "logs_info": {
                     "log_1": {
                         "diameter": 24,
@@ -30837,8 +30892,19 @@
                         "taper": "5-6",
                         "footage": 300,
                         "notes": [
-                            "is_top",
+                            "is_middle",
                             "is_long"
+                        ]
+                    },
+                    "log_4": {
+                        "diameter": 8,
+                        "length": 20,
+                        "delta": 7,
+                        "taper": "0-0",
+                        "footage": 30,
+                        "notes": [
+                            "is_top",
+                            "is_short"
                         ]
                     }
                 }
@@ -39123,7 +39189,7 @@
     },
     "51": {
         "date": "1/11",
-        "total_day_footage": 8360,
+        "total_day_footage": 8730,
         "trees": {
             "tree_1": {
                 "original_logs": [
@@ -39387,19 +39453,30 @@
             },
             "tree_9": {
                 "original_logs": [
-                    "4615",
+                    "3615",
                     "3212"
                 ],
-                "total_footage": 220,
+                "total_footage": 590,
                 "logs_info": {
+                    "log_1": {
+                        "diameter": 15,
+                        "length": 36,
+                        "delta": null,
+                        "taper": "5-6",
+                        "footage": 400,
+                        "notes": [
+                            "is_butt",
+                            "is_long"
+                        ]
+                    },
                     "log_2": {
                         "diameter": 12,
                         "length": 32,
-                        "delta": null,
-                        "taper": "5-6",
-                        "footage": 220,
+                        "delta": 3,
+                        "taper": "3-4",
+                        "footage": 190,
                         "notes": [
-                            "is_butt",
+                            "is_top",
                             "is_long"
                         ]
                     }
