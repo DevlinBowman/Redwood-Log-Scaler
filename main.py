@@ -18,7 +18,8 @@ scale_table = "Utils/Scale_table_data.json"
 format_input(user_supplied_input, formatted_user_supplied_input)
 
 # Determine the log format, default is length_by_diameter
-log_format = get_log_format(formatted_user_supplied_input,print_result=True)
+# log_format = get_log_format(formatted_user_supplied_input,print_result=True)
+log_format = 'diameter_by_length'
 
 # Initialize the primary dictionary
 day_dict = initialize_dict(formatted_user_supplied_input, log_format, save_to_json=False)
@@ -31,9 +32,11 @@ day_dict = initialize_dict(formatted_user_supplied_input, log_format, save_to_js
 '''
 
 true_taper_options = create_taper_options(preset='true_taper', true_taper_butt='5-6')
+brett_taper_options = create_taper_options(preset='brett_method')
+options = brett_taper_options
 
 # Apply "true taper" options
-updated_day_dict = apply_taper_options(day_dict, true_taper_options)
+updated_day_dict = apply_taper_options(day_dict, options)
 
 # brettpreset = create_taper_options(preset='brett_method')
 # updated_day_dict = apply_taper_options(day_dict, brettpreset)
@@ -47,3 +50,7 @@ updated_day_dict = update_day_dict_with_footage(day_dict, scale_table)
 
 # Create the create_metadata
 metadata = create_metadata(storage_dict)
+
+# generate the Final.pdf File
+from Utils.output_pdf import json_to_pdf
+json_to_pdf(storage_dict, 'Live/final_output.pdf', metadata)

@@ -66,12 +66,17 @@ def initialize_log_dict(Formatted_User_Supplied_File, log_format, save_to_json=T
                     if length is None:
                         continue
 
-                log_entries.append({
+                # New Code: Check for missing elements and add 'null_log' note
+                log_entry = {
                     'log_key': f"log_{i}",
-                    'diameter': int(diameter),
-                    'length': int(length),
+                    'diameter': int(diameter) if diameter is not None else None,
+                    'length': int(length) if length is not None else None,
                     'notes': []
-                })
+                }
+                if diameter is None or length is None:
+                    log_entry['notes'].append('null_log')
+
+                log_entries.append(log_entry)
 
             # Sort by diameter in descending order
             log_entries.sort(key=lambda x: x['diameter'], reverse=True)

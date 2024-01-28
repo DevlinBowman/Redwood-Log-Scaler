@@ -57,3 +57,6 @@ def calculate_metadata_from_file(output_file, print_result=True):
         for item in header:
             print(f"{item}: {header[item]}")
     return header
+
+# The function should work as intended, but since it reads a file, I can't execute it here.
+# You can run this updated version of the function in your local environment.
