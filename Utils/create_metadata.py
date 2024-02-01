@@ -1,6 +1,7 @@
-
+import re
 import json
 from collections import Counter, OrderedDict
+
 
 def calculate_metadata_from_file(output_file, print_result=True):
     with open(output_file, 'r') as file:
@@ -10,20 +11,24 @@ def calculate_metadata_from_file(output_file, print_result=True):
 
     # Check for null values in log lengths
     for day_key, day in data.items():
-        date = day.get("date", "NoDate")  # Get the date if available, otherwise use "NoDate"
+        # Get the date if available, otherwise use "NoDate"
+        # date = day.get("date", "NoDate")
         for tree_key, tree in day["trees"].items():
+            tree_num = ''.join(re.findall(r'\d+', tree_key))
             for log_key, log in tree["logs_info"].items():
+                log_num = ''.join(re.findall(r'\d+', log_key))
                 if log.get("length") is None:
                     # Formatting the misinput string to include detailed information
-                    misinput_str = f">>> {date} | Day {day_key} | Tree {tree_key} | Log {log_key} | "
+                    misinput_str = f"INVALID INPUT:  >> {log['original_log']} <<  -- AT:  DAY:{day_key}, TREE:{tree_num},  LOG:{log_num}"
                     misinputs.append(misinput_str)
-
 
     if misinputs:
         # If any null values are found, print the error and misinput data, then return
-        print("MISINPUT ERROR - Please update the following data:")
+        print('\n-----------------------------------------------------------')
+        print("MISINPUT ERROR - Please update the following data:\n")
         for misinput in misinputs:
             print(misinput)
+        print('-----------------------------------------------------------')
         return None  # Exit the function early
 
     # Metadata calculation continues if no misinput errors are found
@@ -46,12 +51,14 @@ def calculate_metadata_from_file(output_file, print_result=True):
                 if 'exceeds_max_len' in log['notes'] or 'exceeds_max_diam' in log['notes']:
                     logs_exceeding_table += 1
 
-                max_log_diameter = max(max_log_diameter, log.get("diameter", 0))
+                max_log_diameter = max(
+                    max_log_diameter, log.get("diameter", 0))
                 taper_usage_counter[log.get("taper", "0-0")] += 1
 
     total_days = len(data)
     total_trees = sum(len(day["trees"]) for day in data.values())
-    sorted_log_lengths_counter = OrderedDict(sorted(log_lengths_counter.items(), key=lambda x: int(x[0]) if x[0] is not None else 0))
+    sorted_log_lengths_counter = OrderedDict(sorted(
+        log_lengths_counter.items(), key=lambda x: int(x[0]) if x[0] is not None else 0))
 
     header = {
         "total_days": total_days,
@@ -75,4 +82,3 @@ def calculate_metadata_from_file(output_file, print_result=True):
     return header
 
 # Note: This function reads from a file and calculates metadata, handling null log lengths early on.
-# Make sure to run this in your local environment to verify its functionality with your specific data.

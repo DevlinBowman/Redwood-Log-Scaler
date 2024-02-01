@@ -51,7 +51,7 @@ def initialize_log_dict(Formatted_User_Supplied_File, log_format, save_to_json=T
                     first_two_digits = int( log[:2]) if log[:2].isdigit() else None
                     if first_two_digits in odd_lengths:
                         misinput_detected = True
-                        print(f"ODD LEN:{log} | DAY: {day_count}, TREE: {tree_count}, LOG: {i}")
+                        # print(f"ODD LEN:{log} | DAY: {day_count}, TREE: {tree_count}, LOG: {i}")
                     else:
                         for len_value in range(8, 43, 2):
                             if str(len_value) == log[:len(str(len_value))]:
@@ -66,7 +66,7 @@ def initialize_log_dict(Formatted_User_Supplied_File, log_format, save_to_json=T
                         log[-2:]) if log[-2:].isdigit() else None
                     if last_two_digits in odd_lengths and log[-1] != '8':
                         misinput_detected = True
-                        print(f"ODD LEN:{log} | DAY: {day_count}, TREE: {tree_count}, LOG: {i}")
+                        # print(f"ODD LEN:{log} | DAY: {day_count}, TREE: {tree_count}, LOG: {i}")
                     else:
                         for len_value in range(8, 43, 2):
                             if str(len_value) == log[-len(str(len_value)):]:
@@ -78,6 +78,7 @@ def initialize_log_dict(Formatted_User_Supplied_File, log_format, save_to_json=T
 
                 log_entry = {
                     'log_key': f"log_{i}",
+                    'original_log': log,
                     'diameter': diameter,
                     'length': length,
                     'notes': ['misinput'] if misinput_detected else []
@@ -113,6 +114,7 @@ def initialize_log_dict(Formatted_User_Supplied_File, log_format, save_to_json=T
                     delta = None
 
                 day_dict[day_count]['trees'][tree_key]['logs_info'][entry['log_key']] = {
+                    'original_log': entry['original_log'],
                     'diameter': entry['diameter'],
                     'length': entry['length'],
                     'delta': delta,
