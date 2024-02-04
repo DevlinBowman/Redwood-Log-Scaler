@@ -1,7 +1,7 @@
 import json
 
-from Utils.auto_determine_logs_format import ( auto_determine_logs_format as get_log_format)
-from Utils.calculate_log_scale import ( calculate_board_footage, update_day_dict_with_footage)
+# from Utils.auto_determine_logs_format import ( auto_determine_logs_format as get_log_format)
+from Utils.calculate_log_scale import (calculate_board_footage, update_day_dict_with_footage)
 from Utils.capture_taper_options import apply_taper_options, create_taper_options
 from Utils.create_metadata import calculate_metadata_from_file as create_metadata
 from Utils.initialize_log_dict import initialize_log_dict as initialize_dict
@@ -23,7 +23,6 @@ format_input(user_supplied_input, formatted_user_supplied_input)
 # log_format = get_log_format(formatted_user_supplied_input,print_result=True)
 # log_format = 'diameter_by_length'
 log_format = 'length_by_diameter'
-print(f"Log format: {log_format}")
 # ---------------------------------
 
 # STEP 3: Initialize the primary dictionary which will be used to store all the data
@@ -37,7 +36,7 @@ day_dict = initialize_dict(
     'true_taper' >> arguments = butt_taper
     'brett_method' arguments = none
 '''
-
+custom_taper_options = create_taper_options(preset='custom', butt_taper='5-6')
 true_taper_options = create_taper_options(
     preset='true_taper', true_taper_butt='5-6')
 brett_taper_options = create_taper_options(preset='brett_method')
@@ -58,7 +57,7 @@ with open(scale_table, "r") as f:
 updated_day_dict = update_day_dict_with_footage(day_dict, scale_table)
 
 # Create the create_metadata
-metadata = create_metadata(storage_dict)
+metadata = create_metadata(storage_dict, log_format)
 
 # generate the Final.pdf File
 # json_to_pdf(storage_dict, 'Live/final_output.pdf', metadata)
