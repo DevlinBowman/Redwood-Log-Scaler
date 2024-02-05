@@ -3,3 +3,5 @@ Utils/__pycache__/
 current.tar.gz
 .DS_Store
 vvv
+.ghssh
+.ghssh.pub
