@@ -1,7 +1,10 @@
 # Redwood Log Scale Calculator User Guide
 
+** To be served at Trashtools.org/Redwood-Log-Scale-Calculator ** 
+
 ## Intro 
 This project takes in a pre-formatted input and calculates fellers log scale based off if a pre-defined metric.
+The user will input their scale list (in the proper format) collected during felling and the app will calculate the scale of the logs and trees within it by day.
 
 ## CRUD Flow
 

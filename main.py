@@ -1,5 +1,6 @@
 import json
 
+import Utils.initialize_live_dir
 # from Utils.auto_determine_logs_format import ( auto_determine_logs_format as get_log_format)
 from Utils.calculate_log_scale import (calculate_board_footage, update_day_dict_with_footage)
 from Utils.capture_taper_options import apply_taper_options, create_taper_options
