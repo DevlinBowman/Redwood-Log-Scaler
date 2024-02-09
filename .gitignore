@@ -4,8 +4,5 @@ __pycache__/
 current.tar.gz
 .DS_Store
 .mypy_cache/
-bin/
-include/
-lib/
 vvv
-pyvenv.cfg
+venv/
