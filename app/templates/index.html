@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redwood Log Scale Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+
+<body>
+    <div class="container">
+        <h1>Redwood Log Scale Calculator</h1>
+        <hr>
+        
+        <div class="pane-container">
+
+            <div class="pane" id="instructions-pane">
+                <h2>Instructions</h2>
+                <div id="instructions-content"></div>
+            </div>
+
+            <div class="pane" id="calculator-pane">
+                
+                <h2>Calculator</h2>
+                <div class="flex-container">
+                    <!-- Object 1 -->
+                    <div class="object">
+                        <h3>Input Scale</h3>
+                        <textarea rows="12" cols="80"></textarea>
+                        <!-- <input type="file"> -->
+                    </div>
+                    <div class="object">
+                        <input type="file">
+                        <hr>
+
+                    <!-- Object 2 -->
+                    <div class="object">
+                        <h3>Input Format</h3>
+                        <!-- Rounded switch -->
+                        <!-- <label class="switch"> -->
+                        <!--     <input type="checkbox"> -->
+                        <!--     <span class="slider round"></span> -->
+                        <!-- </label> -->
+                        <label><input type="radio" name="format" value="length_diameter">Length X Diameter</label>
+                        <label><input type="radio" name="format" value="diameter_length">Diameter X Length</label>
+                    </div>
+
+                    <!-- Object 3 -->
+                    <div class="object">
+                        <h3>Taper Distribution Options</h3>
+                        <button>Lambert</button>
+                        <button>True-Taper</button>
+                        <button>Custom</button>
+                    </div>
+
+                    <!-- Object 4 -->
+                    <div class="object">
+                        <div class="taper-option">
+                            <h4>Butt-log Taper</h4>
+                            <button>1-2</button>
+                            <button>3-4</button>
+                            <button>5-6</button>
+                            <button>7-8</button>
+                            <button>9-10</button>
+                        </div>
+                        <div class="taper-option">
+                            <h4>Middle-log Taper</h4>
+                            <button>1-2</button>
+                            <button>3-4</button>
+                            <button>5-6</button>
+                            <button>7-8</button>
+                            <button>9-10</button>
+                        </div>
+                        <div class="taper-option">
+                            <h4>Top-log Taper</h4>
+                            <button>1-2</button>
+                            <button>3-4</button>
+                            <button>5-6</button>
+                            <button>7-8</button>
+                            <button>9-10</button>
+                        </div>
+                        <hr>
+                    </div>
+
+                    <!-- Object 5 -->
+                    <div class="object">
+                        <button>Calculate</button>
+                        <div class="output-box"></div>
+                        <button>Download</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        // JavaScript to load "Instructions.html" into "instructions-content"
+    </script>
+</body>
+</html>

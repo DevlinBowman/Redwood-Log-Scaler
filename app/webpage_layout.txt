@@ -1,0 +1,67 @@
+This page should have a gruvbox theme and a typewriter font. All buttons should have rounded edges.
+
+<Heading> Redwood Log Scale Calculator // Top center of the page
+Seperator Line
+Instantiate 2 panes, the left will be titled and named "Instructions"
+The right will be titled and named "Calculator" and will serve as the user interaction space for the app
+
+Instructions Pane:
+    Html Element which reads in a file which explains the instructions to the user. The file itself will be another HTML file which will be read in and displayed in the pane. The file will be named "Instructions.html"
+
+Calculator Pane: Everything in this pane will be centered in a flexbox. All totles will be centered and exist as titles at the top of the object
+    Object 1: Object 1 will be used to populate the "user_supplied_input" which is the primary data needed to run the project off of
+        Title: Input Scale
+        Element 1: A Text input field (visible scrolling 2 by 3 box) which allows the user to input their Scale
+        Element 2: A button that allows the user to select a file from their computer
+        Element 3: A Divider line
+        
+    Object 2:
+        Title: Input Format
+        Element 1: A horizontal toggle switch which allows the user to toggle between their inputted files format. This will be passed as an argument to the main function
+            - The options are (Length X Diameter) or (Diameter X Length)
+            - Thesehould be labeled on the left an right side of the radio button
+        Element 2: A Divider line
+    
+    Object 3:
+        Title: Taper Distribution options
+        
+        Element 1: A set of 3 buttons all centered in their pane, The button names should be displayed on the button iteslf. Buttons will effect the page functionality and will be passed as an argument to the main function
+            Title: Presets
+            Button 1:"Lambert"
+            Button 2: "True-Taper"
+            Button 3: "Custom"
+            
+    Object 4: Taper options
+        Element 1:
+            Title: Butt-log Taper
+            Notes: All buttons will be arranged Horizontally and will be centered in their pane. These are radio buttons and will be passed as an argument to the main function
+            Button 1: 1-2
+            Button 2: 3-4
+            Button 3: 5-6
+            Button 4: 7-8
+            Button 5: 9-10
+        Element 2:
+            Title: Middle-log Taper
+            Notes: All buttons will be arranged Horizontally and will be centered in their pane. These are radio buttons and will be passed as an argument to the main function
+            Button 1: 1-2
+            Button 2: 3-4
+            Button 3: 5-6
+            Button 4: 7-8
+            Button 5: 9-10       
+        Element 3:
+            Title: Top-log Taper  
+            Notes: All buttons will be arranged Horizontally and will be centered in their pane. These are radio buttons and will be passed as an argument to the main function
+            Button 1: 1-2
+            Button 2: 3-4
+            Button 3: 5-6
+            Button 4: 7-8
+            Button 5: 9-10              
+        Element 4: A Divider line
+
+    Object 5: Output
+        Element 1: A button that will run the main function and output the results to the user
+            Title: Calculate
+        Element 2: A 3 by 4 box that displays the output Text
+        Element 3: A button that will allow the user to download the output to their computer
+            Title: Download
+
