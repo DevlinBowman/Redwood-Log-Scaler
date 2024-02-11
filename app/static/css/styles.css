@@ -60,12 +60,12 @@ hr {
     text-align: center;
 }
 
-textarea, input[type="file"], input[type="radio"], .output-box {
+textarea, input[type="file"], input[type="radio"], output-box {
     margin: 10px 0;
 }
 
 button {
-    background-color: #b16286; /* Gruvbox purple */
+    background-color: #333; /* Gruvbox purple */
     color: #ebdbb2; /* Gruvbox light text */
     border: none;
     border-radius: 20px;
@@ -74,14 +74,73 @@ button {
     margin: 5px;
 }
 
-.output-box {
-    flex: 1; /* Allows the output-box to grow and fill available space */
-    width: 100%; /* Ensures the output-box width fills the container */
-    /* Add additional styling for the output box */
-    border: 1px solid #ccc; /* Example border */
-    padding: 10px; /* Example padding */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+.object-5 .output-box {
+    width: 100%; /* Ensures the output box fits the width of the container */
+    display: flex; /* Maintains the output box as a flex container */
+    flex-direction: column; /* Aligns child elements vertically */
+    flex: 1;
+    border: 1px solid #a89984; /* Gives a border for a table-like appearance */
+    padding: 10px; /* Adds padding inside the box for spacing */
+    box-sizing: border-box; /* Includes padding and border in the total width and height */
+    background-color: #3c3836; /* Optional: background color to match the pane */
+    margin-top: 10px; /* Adds some space between the calculate button and the output box */
 }
 
-/* Add additional styling as needed */
+
+.selected {
+    background-color: #b16286; /* Dark background */
+    color: #fff; /* Light text */
+    box-shadow: 0 0 0 3px #ebdbb2;
+    outline: 3px solid transparent;
+
+}
+
+/* Style for disabled buttons */
+.butt-log-btn:disabled,
+.middle-log-btn:disabled,
+.top-log-btn:disabled {
+    background-color: #cccccc; /* Light grey background */
+    color: #666666; /* Darker grey text */
+    cursor: not-allowed; /* Show a 'not allowed' cursor on hover */
+    border: 1px solid #999999; /* Optional: Add a border to distinguish disabled buttons */
+}
+
+/* Optional: Additional styling for the disabled groups */
+#butt-log.disabled,
+#middle-log.disabled,
+#top-log.disabled {
+    pointer-events: none; /* Prevent all interactions */
+    opacity: 0.5; /* Visually indicate the group is disabled */
+}
+
+/* Style for disabled buttons, adjusted to not override .selected buttons */
+.butt-log-btn:disabled:not(.selected),
+.middle-log-btn:disabled:not(.selected),
+.top-log-btn:disabled:not(.selected) {
+    background-color: #cccccc; /* Light grey background */
+    color: #666666; /* Darker grey text */
+    cursor: not-allowed; /* Show a 'not allowed' cursor on hover */
+    border: 1px solid #999999; /* Optional: Add a border to distinguish disabled buttons */
+}
+
+/* Ensure .selected class has higher specificity for background color and color */
+.butt-log-btn.selected,
+.middle-log-btn.selected,
+.top-log-btn.selected {
+    background-color: #b16286 !important; /* Gruvbox purple, marked as important to override other styles */
+    color: #fff !important; /* Light text, also important */
+    box-shadow: 0 0 0 3px #ebdbb2; /* Shadow to indicate selection */
+    outline: 3px solid transparent; /* For accessibility, maintain outline */
+}
+
+.object-5 button {
+    font-size: 1.25em; /* Makes the text 50% larger */
+    padding: 10px 20px; /* Increases the padding to make the button larger */
+    background-color: #458588; /* A different color for these buttons */
+    transition: background-color 0.3s ease; /* Smooth transition for the press effect */
+}
+
+.object-5 button:active {
+    background-color: #336672; /* Darker shade when the button is pressed */
+}
 

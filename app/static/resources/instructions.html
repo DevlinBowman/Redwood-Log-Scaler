@@ -9,25 +9,83 @@
     <div class="instructions">
         <!-- Introduction Section -->
         <h1>Introduction</h1>
-        <p>This tool is designed to automate the process of traditional log scale calculation. You will need a digital copy of your scale sheets in a simple but specific format, so please read the following instructions carefully</p>
-        <!-- How to Section -->
+        <strong>Warning:</strong>
+        <p><strong>This tool was designed by a single person familiar with the logging industry and is meant to solve a long-standing problem. However, while software is a powerful and reliable tool, it is only as accurate as the person writing it. As such, it may rarely provide incorrect results that I did not calculate for. Please test the tool and verify its accuracy against your own calculations before relying on it for scale submission. I have been relying on this tool for my own scale and have run significant tests, but things slip through.</strong></p>
+
+        <p>This tool is designed to automate the process of traditional log scale calculation. You will need a digital copy of your scale sheets in a simple but specific format, so please read the following instructions carefully.</p>
+        <p>You may be prompted to "Fix input errors" if there is a mistyped log (a 3716 instead of a 3616, for example). If you see this message, please correct the error in your typed input or uploaded file (this will require a re-upload if you use that input method) and try again.</p>
+
+        
+        
+       <!-- How to Section -->
         <h2>How to Use the Calculator</h2>
+
         <ol>
-            <li>Input your scale. You may copy and paste (or type) it into the field to the right or you may choose to upload a .txt file.</li>
-            <li>Select the format of your scale. This will ensure the program parses the scale correctly. If you write your logs as Length by Diameter or Diameter by Length chooses the cooresponding option.</li>
+            <li>
+                <strong>Input your scale:</strong>
+                <p>You can either copy and paste (or type) your scale into the field to the right, or you may choose to upload a .txt file.</p>
+            </li>
+            <li>
+                <strong>Select the format of your scale:</strong>
+                <p>This ensures the program parses the scale correctly. Choose the corresponding option if you write your logs as Length by Diameter or Diameter by Length.</p>
+            </li>
+            <li>
+                <strong>Select a "Taper Distribution Option":</strong>
+                <p>This affects which taper is applied to which logs in your scale sheets. Note: All short logs are always tapered "0-0". Complete this process by selecting any and all Taper modifiers you are prompted with buttons for</p>
+            </li>
+            <li>
+                <strong>Calculate your Scale:</strong>
+                <p>Once you have input your scale, selected the format, and chosen your taper distribution, you can click the "Calculate" button to see the results.</p>
+                <p>Results will be displayed in plain text and may also be downloaded by clicking the "Download" button.</p>
+            </li>
         </ol>
 
+        <!-- Taper Options Explanation -->
+        <h3>Taper Options</h3>
+        <ul>
+            <li>
+                <strong>"Lambert":</strong>
+                <p>Labels logs according to specific criteria, in this order:
+                    <br>- Short logs are "Short logs (0-0)"
+                    <br>- The first log is a "Butt Log (5-6)"
+                    <br>- The last log is a "Top Log (1-2)"
+                    <br>- Logs that are neither Butt nor Top are "Middle Logs (3-4)"
+                </p>
+            </li>
+            <li>
+                <strong>"True-Taper":</strong>
+                <p>Does not use Middle or Top labels but instead applies a standard taper to all butt logs (circumventing the need to measure stumps). It calculates taper for the remaining logs based on the difference between the current log and the previous one in the tree. Essentially, it captures the deltas between logs and applies the actual difference as the taper.</p>
+            </li>
+            <li>
+                <strong>"Custom":</strong>
+                <p>Automatically parses Butt, Middle, & Top logs (using the same rules as the Lambert Method) but allows for exact selection of taper options for each category.</p>
+            </li>
+        </ul>
         <!-- Scale Input Format Requirements -->
         <h3>Scale Input Format Requirements</h3>
         <p>The application interprets the scale based on the following format:</p>
+
         <ul>
-            <li>log are formatted as a string of numbers. Each log must be seperated by a space withing a tree</li>
-            <p>The FOllowing is an example of valid logs: <br>3624, 3619, or  4016</p>
-            <li>trees are formatted as a list of log (or a single log) seperated by a "/" character. 
-            <p>The following is an example of a valid tree: <br>/3624 3619 4016/</p>
-            <li>days contain a list of trees and can be signified by a date formatted MM/DD followed by a "/" or can be arbitrairly seperated by usind the sequence "///". (Eg. 11/12/3624 3619 4016///2018 3614 ...)</li>
-            <p>The following is an example of a valid day: <br>11/12/3624 3619 4016///2018 3614 ...</p>
+            <li>
+                <strong>Logs:</strong>
+                <p>Logs are formatted as a string of numbers, with each log within a tree separated by a space.</p>
+                <p>Example of valid logs:</p>
+                <blockquote>3624, 3619, or 4016</blockquote>
+            </li>
+            <li>
+                <strong>Trees:</strong>
+                <p>Trees are formatted as a list of logs (or a single log) separated by a "/" character.</p>
+                <p>Example of a valid tree:</p>
+                <blockquote>/3624 3619 4016/</blockquote>
+            </li>
+            <li>
+                <strong>Days:</strong>
+                <p>Days contain a list of trees and can be signified by a date formatted MM/DD followed by a "/", or can be arbitrarily separated by using the sequence "///".</p>
+                <p>Example of a valid day:</p>
+                <blockquote>11/12/3624 3619 4016/3618 4014 3610/329/4011/3616 4012 209///2018 3614 ...</blockquote>
+            </li>
         </ul>
+
         <p>If you have any questions or need further assistance, please contact me..</p>
     </div>
 </body>
