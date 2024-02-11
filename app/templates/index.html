@@ -10,10 +10,14 @@
 </head>
 
 <body>
+    <!-- Header -->
     <div class="container">
-        <h1>Redwood Log Scale Calculator</h1>
+        <!-- Page Title -->
+        <div id="page-title">
+            <h1>Redwood Log Scale Calculator</h1>
         <hr>
-        
+         
+        <!-- All the stuff inside the panes -->
         <div class="pane-container">
 
             <div class="pane" id="instructions-pane">
@@ -28,7 +32,10 @@
                     <!-- Object 1 -->
                     <div class="object">
                         <h3>Input Scale</h3>
-                        <textarea rows="12" cols="80"></textarea>
+                        <div class="flex-container" id="scale-input-box">
+                            <textarea rows="12" cols="80"></textarea>
+                        </div>
+
                         <!-- <input type="file"> -->
                     </div>
                     <div class="object">
@@ -45,6 +52,7 @@
                         <!-- </label> -->
                         <label><input type="radio" name="format" value="length_diameter">Length X Diameter</label>
                         <label><input type="radio" name="format" value="diameter_length">Diameter X Length</label>
+                        <hr>
                     </div>
 
                     <!-- Object 3 -->
@@ -86,17 +94,28 @@
 
                     <!-- Object 5 -->
                     <div class="object">
-                        <button>Calculate</button>
+                        <div> <button>Calculate</button> </div> 
                         <div class="output-box"></div>
-                        <button>Download</button>
+                        <div> <button>Download</button> </div>
                     </div>
 
                 </div>
             </div>
         </div>
     </div>
-    <script>
-        // JavaScript to load "Instructions.html" into "instructions-content"
-    </script>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Correct the path to match the location of instructions.html within the static/resources directory
+            fetch('{{ url_for("static", filename="resources/instructions.html") }}')
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('instructions-content').innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Failed to load instructions:', error);
+                });
+        });
+        </script>
+
 </body>
 </html>
