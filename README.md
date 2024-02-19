@@ -5,6 +5,10 @@ This guide is intended to explain the use of the Redwood Log Scale Calculator, a
 ## Introduction
 The Redwood Log Scale Calculator is designed to process pre-formatted input to calculate the log scale based on a predefined metric. Users will input their scale list, collected during felling, in the specified format. The application will then compute the scale of logs and trees for each day.
 
+## Web Development Startup
+- currently, the only dependency is Python - Flask
+- start the server by running python3 run.py
+
 ## Overview of Operations (CRUD Flow)
 
 ### Data Collection
