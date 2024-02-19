@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,169 +15,169 @@
         <!-- Page Title -->
         <div id="page-title">
             <h1>Redwood Log Scale Calculator</h1>
-        <hr>
-         
-        <!-- All the stuff inside the panes -->
-        <div class="pane-container">
+            <hr>
 
-            <div class="pane" id="instructions-pane">
-                <h2>Instructions</h2>
-                <div id="instructions-content"></div>
-            </div>
+            <!-- All the stuff inside the panes -->
+            <div class="pane-container">
 
-            <div class="pane" id="calculator-pane">
-                
-                <h2>Calculator</h2>
-                <div class="flex-container">
-                    <!-- Object 1 -->
-                    <div class="object">
-                        <h3>Input Scale</h3>
-                        <div class="flex-container" id="scale-input-box">
-                            <textarea rows="12" cols="80"></textarea>
+                <div class="pane" id="instructions-pane">
+                    <h2>Instructions</h2>
+                    <div id="instructions-content"></div>
+                </div>
+
+                <div class="pane" id="calculator-pane">
+
+                    <h2>Calculator</h2>
+                    <div class="flex-container">
+                        <!-- Object 1 -->
+                        <div class="object">
+                            <h3>Input Scale</h3>
+                            <div class="flex-container" id="scale-input-box">
+                                <textarea rows="12" cols="80"></textarea>
+                            </div>
+
+                            <!-- <input type="file"> -->
+                        </div>
+                        <div class="object">
+                            <input type="file">
+                            <hr>
+
+                            <!-- Object 2 -->
+                            <div class="object">
+                                <h3>Input Format</h3>
+
+                                <!-- Input Format -->
+                                <button type="button" id="length_diameter" class="format-btn"
+                                    onclick="selectFormat('length_diameter', 'format-btn')">Length X Diameter</button>
+                                <input type="radio" id="length_diameter_radio" name="format" value="length_diameter"
+                                    style="display:none;">
+
+                                <button type="button" id="diameter_length" class="format-btn"
+                                    onclick="selectFormat('diameter_length', 'format-btn')">Diameter X Length</button>
+                                <input type="radio" id="diameter_length_radio" name="format" value="diameter_length"
+                                    style="display:none;">
+
+
+                                <hr>
+                            </div>
+
+                            <!-- Object 3 -->
+                            <div class="object">
+                                <h3>Taper Distribution Options</h3>
+
+                                <button type="button" id="lambert_btn" class="taper-btn"
+                                    onclick="selectTaperOption('lambert')">Lambert</button>
+                                <input type="radio" id="lambert_radio" name="taper_option" value="lambert"
+                                    style="display:none;">
+
+                                <button type="button" id="true_taper_btn" class="taper-btn"
+                                    onclick="selectTaperOption('true_taper')">True-Taper</button>
+                                <input type="radio" id="true_taper_radio" name="taper_option" value="true_taper"
+                                    style="display:none;">
+
+                                <button type="button" id="custom_btn" class="taper-btn"
+                                    onclick="selectTaperOption('custom')">Custom</button>
+                                <input type="radio" id="custom_radio" name="taper_option" value="custom"
+                                    style="display:none;">
+                            </div>
+
+
+
                         </div>
 
-                        <!-- <input type="file"> -->
-                    </div>
-                    <div class="object">
-                        <input type="file">
-                        <hr>
-
-                    <!-- Object 2 -->
-                    <div class="object">
-                        <h3>Input Format</h3>
-
-                        <!-- Input Format -->
-                        <button type="button" id="length_diameter" class="format-btn" onclick="selectFormat('length_diameter', 'format-btn')">Length X Diameter</button>
-                        <input type="radio" id="length_diameter_radio" name="format" value="length_diameter" style="display:none;">
-
-                        <button type="button" id="diameter_length" class="format-btn" onclick="selectFormat('diameter_length', 'format-btn')">Diameter X Length</button>
-                        <input type="radio" id="diameter_length_radio" name="format" value="diameter_length" style="display:none;">
-
+                        <!-- Object 4 -->
+                        <div class="object">
+                            <div class="taper-option" id="butt-log">
+                                <h4>Butt-log Taper</h4>
+                                <!-- Iterate for each button -->
+                                <button type="button" id="butt_1_2_btn" class="butt-log-btn"
+                                    onclick="selectLogOption('butt', '1_2')" disabled>1-2</button>
+                                <input type="radio" id="butt_1_2_radio" name="butt_log_option" value="1_2"
+                                    style="display:none;">
+                                <button type="button" id="butt_3_4_btn" class="butt-log-btn"
+                                    onclick="selectLogOption('butt', '3_4')" disabled>3-4</button>
+                                <input type="radio" id="butt_3_4_radio" name="butt_log_option" value="3_4"
+                                    style="display:none;">
+                                <button type="button" id="butt_5_6_btn" class="butt-log-btn"
+                                    onclick="selectLogOption('butt', '5_6')" disabled>5-6</button>
+                                <input type="radio" id="butt_5_6_radio" name="butt_log_option" value="5_6"
+                                    style="display:none;">
+                                <button type="button" id="butt_7_8_btn" class="butt-log-btn"
+                                    onclick="selectLogOption('butt', '7_8')" disabled>7-8</button>
+                                <input type="radio" id="butt_7_8_radio" name="butt_log_option" value="7_8"
+                                    style="display:none;">
+                                <button type="button" id="butt_9_10_btn" class="butt-log-btn"
+                                    onclick="selectLogOption('butt', '9_10')" disabled>9-10</button>
+                                <input type="radio" id="butt_9_10_radio" name="butt_log_option" value="9_10"
+                                    style="display:none;">
+                            </div>
+                            <div class="taper-option" id="middle-log">
+                                <h4>Middle-log Taper</h4>
+                                <button type="button" id="middle_1_2_btn" class="middle-log-btn"
+                                    onclick="selectLogOption('middle', '1_2')" disabled>1-2</button>
+                                <input type="radio" id="middle_1_2_radio" name="middle_log_option" value="1_2"
+                                    style="display:none;">
+                                <button type="button" id="middle_3_4_btn" class="middle-log-btn"
+                                    onclick="selectLogOption('middle', '3_4')" disabled>3-4</button>
+                                <input type="radio" id="middle_3_4_radio" name="middle_log_option" value="3_4"
+                                    style="display:none;">
+                                <button type="button" id="middle_5_6_btn" class="middle-log-btn"
+                                    onclick="selectLogOption('middle', '5_6')" disabled>5-6</button>
+                                <input type="radio" id="middle_5_6_radio" name="middle_log_option" value="5_6"
+                                    style="display:none;">
+                                <button type="button" id="middle_7_8_btn" class="middle-log-btn"
+                                    onclick="selectLogOption('middle', '7_8')" disabled>7-8</button>
+                                <input type="radio" id="middle_7_8_radio" name="middle_log_option" value="7_8"
+                                    style="display:none;">
+                                <button type="button" id="middle_9_10_btn" class="middle-log-btn"
+                                    onclick="selectLogOption('middle', '9_10')" disabled>9-10</button>
+                                <input type="radio" id="middle_9_10_radio" name="middle_log_option" value="9_10"
+                                    style="display:none;">
+                            </div>
+                            <div class="taper-option" id="top-log">
+                                <h4>Top-log Taper</h4>
+                                <button type="button" id="top_1_2_btn" class="top-log-btn"
+                                    onclick="selectLogOption('top', '1_2')" disabled>1-2</button>
+                                <input type="radio" id="top_1_2_radio" name="top_log_option" value="1_2"
+                                    style="display:none;">
+                                <button type="button" id="top_3_4_btn" class="top-log-btn"
+                                    onclick="selectLogOption('top', '3_4')" disabled>3-4</button>
+                                <input type="radio" id="top_3_4_radio" name="top_log_option" value="3_4"
+                                    style="display:none;">
+                                <button type="button" id="top_5_6_btn" class="top-log-btn"
+                                    onclick="selectLogOption('top', '5_6')" disabled>5-6</button>
+                                <input type="radio" id="top_5_6_radio" name="top_log_option" value="5_6"
+                                    style="display:none;">
+                                <button type="button" id="top_7_8_btn" class="top-log-btn"
+                                    onclick="selectLogOption('top', '7_8')" disabled>7-8</button>
+                                <input type="radio" id="top_7_8_radio" name="top_log_option" value="7_8"
+                                    style="display:none;">
+                                <button type="button" id="top_9_10_btn" class="top-log-btn"
+                                    onclick="selectLogOption('top', '9_10')" disabled>9-10</button>
+                                <input type="radio" id="top_9_10_radio" name="top_log_option" value="9_10"
+                                    style="display:none;">
+                            </div>
+                            <hr>
+                        </div>
 
                         <script>
-                        function selectFormat(value) {
-                            document.getElementById(value).checked = true;
-                        }
+
                         </script>
 
 
-                        <hr>
-                    </div>
-
-                    <!-- Object 3 -->
-                    <div class="object">
-                        <h3>Taper Distribution Options</h3>
-
-                        <button type="button" id="lambert_btn" class="taper-btn" onclick="selectTaperOption('lambert')">Lambert</button>
-                        <input type="radio" id="lambert_radio" name="taper_option" value="lambert" style="display:none;">
-
-                        <button type="button" id="true_taper_btn" class="taper-btn" onclick="selectTaperOption('true_taper')">True-Taper</button>
-                        <input type="radio" id="true_taper_radio" name="taper_option" value="true_taper" style="display:none;">
-
-                        <button type="button" id="custom_btn" class="taper-btn" onclick="selectTaperOption('custom')">Custom</button>
-                        <input type="radio" id="custom_radio" name="taper_option" value="custom" style="display:none;">
-                    </div>
-
-                    <script>
-                    function selectTaperOption(selectedOption) {
-                        // Deselect all buttons and uncheck all radio inputs
-                        const buttons = document.querySelectorAll('.taper-btn');
-                        buttons.forEach(button => {
-                            button.classList.remove('selected'); // Assuming 'selected' is the CSS class for showing the button is pressed
-                        });
-                        const radios = document.querySelectorAll('input[name="taper_option"]');
-                        radios.forEach(radio => {
-                            radio.checked = false;
-                        });
-
-                        // Select the clicked button and check the corresponding radio input
-                        document.getElementById(selectedOption + '_btn').classList.add('selected');
-                        document.getElementById(selectedOption + '_radio').checked = true;
-                    }
-                    </script>
-
-
-
-                    </div>
-
-                    <!-- Object 4 -->
-                    <div class="object">
-                        <div class="taper-option" id="butt-log">
-                            <h4>Butt-log Taper</h4>
-                            <!-- Iterate for each button -->
-                            <button type="button" id="butt_1_2_btn" class="butt-log-btn" onclick="selectOption('butt', '1_2')" disabled>1-2</button>
-                            <input type="radio" id="butt_1_2_radio" name="butt_log_option" value="1_2" style="display:none;">
-                            <button type="button" id="butt_3_4_btn" class="butt-log-btn" onclick="selectOption('butt', '3_4')" disabled>3-4</button>
-                            <input type="radio" id="butt_3_4_radio" name="butt_log_option" value="3_4" style="display:none;">
-                            <button type="button" id="butt_5_6_btn" class="butt-log-btn" onclick="selectOption('butt', '5_6')" disabled>5-6</button>
-                            <input type="radio" id="butt_5_6_radio" name="butt_log_option" value="5_6" style="display:none;">
-                            <button type="button" id="butt_7_8_btn" class="butt-log-btn" onclick="selectOption('butt', '7_8')" disabled>7-8</button>
-                            <input type="radio" id="butt_7_8_radio" name="butt_log_option" value="7_8" style="display:none;">
-                            <button type="button" id="butt_9_10_btn" class="butt-log-btn" onclick="selectOption('butt', '9_10')" disabled>9-10</button>
-                            <input type="radio" id="butt_9_10_radio" name="butt_log_option" value="9_10" style="display:none;">
+                        <!-- Object 5 -->
+                        <div class="object object-5">
+                            <div> <button>Calculate</button> <button>Download</button></div>
+                            <div class="output-box"></div>
+                            <div> </div>
                         </div>
-                        <div class="taper-option" id="middle-log">
-                            <h4>Middle-log Taper</h4>
-                            <button type="button" id="middle_1_2_btn" class="middle-log-btn" onclick="selectOption('middle', '1_2')" disabled>1-2</button>
-                            <input type="radio" id="middle_1_2_radio" name="middle_log_option" value="1_2" style="display:none;">
-                            <button type="button" id="middle_3_4_btn" class="middle-log-btn" onclick="selectOption('middle', '3_4')" disabled>3-4</button>
-                            <input type="radio" id="middle_3_4_radio" name="middle_log_option" value="3_4" style="display:none;">
-                            <button type="button" id="middle_5_6_btn" class="middle-log-btn" onclick="selectOption('middle', '5_6')" disabled>5-6</button>
-                            <input type="radio" id="middle_5_6_radio" name="middle_log_option" value="5_6" style="display:none;">
-                            <button type="button" id="middle_7_8_btn" class="middle-log-btn" onclick="selectOption('middle', '7_8')" disabled>7-8</button>
-                            <input type="radio" id="middle_7_8_radio" name="middle_log_option" value="7_8" style="display:none;">
-                            <button type="button" id="middle_9_10_btn" class="middle-log-btn" onclick="selectOption('middle', '9_10')" disabled>9-10</button>
-                            <input type="radio" id="middle_9_10_radio" name="middle_log_option" value="9_10" style="display:none;"> 
-                        </div>
-                        <div class="taper-option" id="top-log">
-                            <h4>Top-log Taper</h4>
-                            <button type="button" id="top_1_2_btn" class="top-log-btn" onclick="selectOption('top', '1_2')" disabled>1-2</button>
-                            <input type="radio" id="top_1_2_radio" name="top_log_option" value="1_2" style="display:none;">
-                            <button type="button" id="top_3_4_btn" class="top-log-btn" onclick="selectOption('top', '3_4')" disabled>3-4</button>
-                            <input type="radio" id="top_3_4_radio" name="top_log_option" value="3_4" style="display:none;">
-                            <button type="button" id="top_5_6_btn" class="top-log-btn" onclick="selectOption('top', '5_6')" disabled>5-6</button>
-                            <input type="radio" id="top_5_6_radio" name="top_log_option" value="5_6" style="display:none;">
-                            <button type="button" id="top_7_8_btn" class="top-log-btn" onclick="selectOption('top', '7_8')" disabled>7-8</button>
-                            <input type="radio" id="top_7_8_radio" name="top_log_option" value="7_8" style="display:none;">
-                            <button type="button" id="top_9_10_btn" class="top-log-btn" onclick="selectOption('top', '9_10')" disabled>9-10</button>
-                            <input type="radio" id="top_9_10_radio" name="top_log_option" value="9_10" style="display:none;"> 
-                        </div>
-                        <hr>
-                    </div>
-
-                        <script>
-                        function selectOption(logType, optionValue) {
-                            // Prefix for button and radio IDs
-                            const prefix = logType + '_' + optionValue;
-
-                            // Deselect all buttons and uncheck all radios in the same group
-                            document.querySelectorAll('.' + logType + '-log-btn').forEach(button => {
-                                button.classList.remove('selected'); // Assuming 'selected' is the CSS class for showing the button is pressed
-                            });
-                            document.querySelectorAll('input[name="' + logType + '_log_option"]').forEach(radio => {
-                                radio.checked = false;
-                            });
-
-                            // Select the clicked button and check the corresponding radio input
-                            document.getElementById(prefix + '_btn').classList.add('selected');
-                            document.getElementById(prefix + '_radio').checked = true;
-                        }
-                        </script>
-
-
-                    <!-- Object 5 -->
-                    <div class="object object-5">
-                        <div> <button>Calculate</button> <button>Download</button></div>
-                        <div class="output-box"></div>
-                        <div>  </div>
-                    </div>
                     </div>
 
                 </div>
             </div>
         </div>
     </div>
-        <script>
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Load instructions content
             fetch('{{ url_for("static", filename="resources/instructions.html") }}')
@@ -189,84 +189,8 @@
                     console.error('Failed to load instructions:', error);
                 });
         });
-
-        function selectFormat(value, group) {
-            // Deselect all buttons in the group and select the clicked one
-            document.querySelectorAll('.' + group).forEach(btn => btn.classList.remove('selected'));
-            document.getElementById(value).classList.add('selected');
-            document.getElementById(value + '_radio').checked = true; // Check the corresponding radio input
-        }
-
-        function selectTaperOption(selectedOption) {
-            // Reset Object 4 and Object 3 to default state
-            resetObject4();
-            resetObject3();
-
-            // Select the clicked button and check the corresponding radio input in Object 3
-            document.getElementById(selectedOption + '_btn').classList.add('selected');
-            document.getElementById(selectedOption + '_radio').checked = true;
-
-            // Apply logic based on the selection in Object 3
-            switch (selectedOption) {
-                case 'lambert':
-                    // Apply 'selected' class to preset buttons for Lambert
-                    document.getElementById('butt_5_6_btn').classList.add('selected');
-                    document.getElementById('middle_3_4_btn').classList.add('selected');
-                    document.getElementById('top_1_2_btn').classList.add('selected');
-
-                    // Lock all buttons in Object 4
-                    lockGroup('butt-log', true);
-                    lockGroup('middle-log', true);
-                    lockGroup('top-log', true);
-                    break;
-                case 'true_taper':
-                    // Enable only "butt-log" buttons, keep others locked
-                    lockGroup('middle-log', true);
-                    lockGroup('top-log', true);
-                    break;
-                case 'custom':
-                    // Unlock all buttons in Object 4
-                    lockGroup('butt-log', false);
-                    lockGroup('middle-log', false);
-                    lockGroup('top-log', false);
-                    break;
-            }
-        }
-
-        function resetObject3() {
-            // Deselect all buttons and uncheck all radio inputs in Object 3
-            document.querySelectorAll('.taper-btn').forEach(button => button.classList.remove('selected'));
-            document.querySelectorAll('input[name="taper_option"]').forEach(radio => radio.checked = false);
-        }
-
-        function resetObject4() {
-            // Remove 'selected' class from all buttons, enable them, and uncheck all radio inputs in Object 4
-            document.querySelectorAll('.object .taper-option button').forEach(button => {
-                button.classList.remove('selected');
-                button.disabled = false;
-            });
-            document.querySelectorAll('.object .taper-option input[type="radio"]').forEach(radio => radio.checked = false);
-        }
-
-        function presetSelections(group, option) {
-            // Preset a specific button as selected and check its radio button in Object 4
-            const buttonId = `${group}_${option}_btn`;
-            const radioId = `${group}_${option}_radio`;
-            document.getElementById(buttonId).classList.add('selected');
-            document.getElementById(radioId).checked = true;
-        }
-
-        function lockGroup(groupID, lock) {
-            // Lock or unlock all buttons in a specific group in Object 4
-            const buttons = document.querySelectorAll(`#${groupID} button`);
-            buttons.forEach(button => button.disabled = lock);
-        }
-
-        // Add event listeners to buttons in Object 3
-        document.getElementById('lambert_btn').addEventListener('click', () => selectTaperOption('lambert'));
-        document.getElementById('true_taper_btn').addEventListener('click', () => selectTaperOption('true_taper'));
-        document.getElementById('custom_btn').addEventListener('click', () => selectTaperOption('custom'));
-        </script>
-
+    </script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
+
 </html>
