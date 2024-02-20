@@ -1,64 +1,50 @@
+# Main script to run when user clicks "Calculate" on the webpage
 import json
 
 import Utils.initialize_live_dir
-# from Utils.auto_determine_logs_format import ( auto_determine_logs_format as get_log_format)
-from Utils.calculate_log_scale import (calculate_board_footage, update_day_dict_with_footage)
+from Utils.calculate_log_scale import  update_day_dict_with_footage
 from Utils.capture_taper_options import apply_taper_options, create_taper_options
 from Utils.create_metadata import calculate_metadata_from_file as create_metadata
 from Utils.initialize_log_dict import initialize_log_dict as initialize_dict
 from Utils.input_file_formatter import input_file_formatter as format_input
 # from Utils.output_pdf import json_to_pdf
 
-# STEP 0: Constants > Files
-user_supplied_input = "Live/user_supplied_input.txt"
-formatted_user_supplied_input = "Live/formatted_user_supplied_input.txt"
-storage_dict = "Live/parsed_data.json"
-scale_table = "Utils/Scale_table_data.json"
+# Example of the fields that will be passed from the webpage
+webpage_fields = {
+    "user_supplied_input": "Live/user_supplied_input.txt",
+    "log_format": "length_by_diameter",
+    "options": create_taper_options(preset='true_taper', true_taper_butt='5-6')
+}
 
-# STEP 1:  Format the user supplied input to a standard formattes file
-format_input(user_supplied_input, formatted_user_supplied_input)
+print(webpage_fields["options"])
 
-# ---------------------------------
-# STEP 2: Determine the log format
-# Determine the log format, default is length_by_diameter
-# log_format = get_log_format(formatted_user_supplied_input,print_result=True)
-# log_format = 'diameter_by_length'
-log_format = 'length_by_diameter'
-# ---------------------------------
-
-# STEP 3: Initialize the primary dictionary which will be used to store all the data
-day_dict = initialize_dict(
-    formatted_user_supplied_input, log_format, save_to_json=False)
-
-# STEP 4: Capture the taper options for calculating board footage
-# Apply taper options
-''' preset options are:
-    'custom' >> arguments = butt_taper, middle_taper, top_taper, short_taper
-    'true_taper' >> arguments = butt_taper
-    'brett_method' arguments = none
-'''
-custom_taper_options = create_taper_options(preset='custom', butt_taper='5-6')
-true_taper_options = create_taper_options(
-    preset='true_taper', true_taper_butt='5-6')
-brett_taper_options = create_taper_options(preset='brett_method')
-
-# **************************
-options = true_taper_options
-# **************************
-
-# STEP 5: Calculate the board footage using the initialized dictionary and taper options
-updated_day_dict = apply_taper_options(day_dict, options)
+def main(webpage_fields):
+    user_supplied_input = webpage_fields["user_supplied_input"]
+    formatted_user_supplied_input = "Live/formatted_user_supplied_input.txt"
+    storage_dict = "Live/parsed_data.json"
+    scale_table = "Utils/Scale_table_data.json"
+    log_format = webpage_fields["log_format"]
+    options = webpage_fields["options"]
 
 
-# Load the scale table
-with open(scale_table, "r") as f:
-    scale_table = json.load(f)
+    format_input(user_supplied_input, formatted_user_supplied_input)
 
-# Update the day_dict with board footage
-updated_day_dict = update_day_dict_with_footage(day_dict, scale_table)
+    day_dict = initialize_dict(
+        formatted_user_supplied_input, log_format, save_to_json=False)
 
-# Create the create_metadata
-metadata = create_metadata(storage_dict, log_format)
+    # Initialize the day_dict with the taper options
+    updated_day_dict = apply_taper_options(day_dict, options)
 
-# generate the Final.pdf File
-# json_to_pdf(storage_dict, 'Live/final_output.pdf', metadata)
+    with open(scale_table, "r") as f:
+        scale_table = json.load(f)
+
+    # Update the day_dict with footage
+    updated_day_dict = update_day_dict_with_footage(day_dict, scale_table)
+
+    # calculates & prints output information
+    metadata = create_metadata(storage_dict, log_format)
+
+main(webpage_fields)
+   
+
+

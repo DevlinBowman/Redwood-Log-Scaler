@@ -84,15 +84,15 @@ def calculate_metadata_from_file(output_file, log_format, print_result=True):
                    "greatest_tree_footage", "total_count_of_each_log_length", "taper_usage_rates"]
     }
 
-    def print_header():
-
-        if print_result:
-            # for item in header:
-            #     print(f"{item}: {header[item]}")
-            #     # print a formatted version of the header items
-            print("Summary Report")
-            for item, value in header.items():
-                print(f"{item.replace('_', ' ').title():<30}: {value}")
+    # def print_header():
+    #
+    #     if print_result:
+    #         # for item in header:
+    #         #     print(f"{item}: {header[item]}")
+    #         #     # print a formatted version of the header items
+    #         print("Summary Report")
+    #         for item, value in header.items():
+    #             print(f"{item.replace('_', ' ').title():<30}: {value}")
 
     def print_header_groups():
 
