@@ -6,6 +6,12 @@ def input_file_formatter(infile, outfile):
     with open(infile, 'r') as file:
         raw_data = file.read()
 
+    # remove all leading and trailing whitespace
+    raw_data = raw_data.strip()
+
+    #remove all newlines
+    raw_data = raw_data.replace('\n', '')
+
     # Replace all dashes and commas with slashes
     raw_data = re.sub(r'[,|-]', '/', raw_data)
 
