@@ -20,7 +20,7 @@ def initialize_log_dict(Formatted_User_Supplied_File, log_format, save_to_json=T
         day_dict[day_count] = {"date": "",
                                "total_day_footage": None, "trees": {}}
 
-    odd_lengths = set([11, 13, 15, 17, 19, 21, 23, 25,
+    odd_lengths = set([9, 11, 13, 15, 17, 19, 21, 23, 25,
                       27, 29, 31, 33, 35, 37, 39, 41, 43])
 
     for line in lines:
@@ -48,7 +48,8 @@ def initialize_log_dict(Formatted_User_Supplied_File, log_format, save_to_json=T
                 misinput_detected = False
 
                 if log_format == "length_by_diameter":
-                    first_two_digits = int( log[:2]) if log[:2].isdigit() else None
+                    first_two_digits = int(
+                        log[:2]) if log[:2].isdigit() else None
                     if first_two_digits in odd_lengths:
                         misinput_detected = True
                         # print(f"ODD LEN:{log} | DAY: {day_count}, TREE: {tree_count}, LOG: {i}")
@@ -62,19 +63,31 @@ def initialize_log_dict(Formatted_User_Supplied_File, log_format, save_to_json=T
                                     break
 
                 elif log_format == "diameter_by_length":
-                    last_two_digits = int(
-                        log[-2:]) if log[-2:].isdigit() else None
-                    if last_two_digits in odd_lengths and log[-1] != '8':
+                    # Correctly identify the length and diameter
+                    misinput_detected = False
+                    length_identified = False
+
+                    # Iterate through possible lengths in reverse order to match the longest possible first
+                    for len_value in sorted(range(8, 43, 2), reverse=True):
+                        if log.endswith(str(len_value)):
+                            # Extract diameter and length
+                            diameter_part = log[:-len(str(len_value))]
+                            length_part = log[-len(str(len_value)):]
+                            
+                            if diameter_part.isdigit() and length_part.isdigit():
+                                diameter = int(diameter_part)
+                                length = int(length_part)
+                                
+                                # Validate the diameter and length
+                                if 6 <= diameter <= 200 and length in range(8, 43, 2):
+                                    length_identified = True
+                                    break  # Valid length and diameter found
+
+                    # If length was not identified correctly or it falls into odd_lengths, mark as misinput
+                    if not length_identified or length in odd_lengths:
                         misinput_detected = True
-                        # print(f"ODD LEN:{log} | DAY: {day_count}, TREE: {tree_count}, LOG: {i}")
-                    else:
-                        for len_value in range(8, 43, 2):
-                            if str(len_value) == log[-len(str(len_value)):]:
-                                diameter = int(
-                                    log[:-len(str(len_value))]) if log[:-len(str(len_value))].isdigit() else None
-                                if diameter and 6 <= diameter <= 200:
-                                    length = len_value
-                                    break
+
+
 
                 log_entry = {
                     'log_key': f"log_{i}",
