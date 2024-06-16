@@ -73,11 +73,11 @@ def initialize_log_dict(Formatted_User_Supplied_File, log_format, save_to_json=T
                             # Extract diameter and length
                             diameter_part = log[:-len(str(len_value))]
                             length_part = log[-len(str(len_value)):]
-                            
+
                             if diameter_part.isdigit() and length_part.isdigit():
                                 diameter = int(diameter_part)
                                 length = int(length_part)
-                                
+
                                 # Validate the diameter and length
                                 if 6 <= diameter <= 200 and length in range(8, 43, 2):
                                     length_identified = True
@@ -86,8 +86,6 @@ def initialize_log_dict(Formatted_User_Supplied_File, log_format, save_to_json=T
                     # If length was not identified correctly or it falls into odd_lengths, mark as misinput
                     if not length_identified or length in odd_lengths:
                         misinput_detected = True
-
-
 
                 log_entry = {
                     'log_key': f"log_{i}",

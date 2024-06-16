@@ -97,9 +97,6 @@ def calculate_metadata_from_file(output_file, log_format, print_result=True):
     def print_header_groups():
 
         if print_result:
-
-            # print each group of items without the group Name
-
             for group in header_groups:
                 print()
                 for item in header_groups[group]:
